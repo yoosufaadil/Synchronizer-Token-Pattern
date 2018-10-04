@@ -2,27 +2,24 @@
 session_start();
 
 if(!$_SESSION["loged"]){
-if (isset($_POST['username']) && isset($_POST['password'])){
+  if (isset($_POST['username']) && isset($_POST['password'])){
 
- 	if($_POST['username'] == "admin" && $_POST['password']=="password"){
-
+ 	  if($_POST['username'] == "admin" && $_POST['password']=="password"){
 
 			$_SESSION["loged"] =$_POST['username'] .$_POST['password'];
-	header('Location: controller.php');
+	    header('Location: controller.php');
 
-}else {
+    }else {
 
-  echo '<div class="alert alert-danger">
-  username or password is wrong!
-</div>';
-}
+      echo '<div class="alert alert-danger"> username or password is wrong! </div>';
 
-}
+    }
 
+  }
 }else {
 
 	header('Location: controller.php');
-exit();
+  exit();
 
 }
 
@@ -31,7 +28,6 @@ exit();
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
 <div class="container">
 <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">

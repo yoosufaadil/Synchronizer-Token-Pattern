@@ -6,12 +6,14 @@ function generateToken( $formName )
 {
 
 return $_SESSION['csrf_token'] = base64_encode(openssl_random_pseudo_bytes(32));
+
 }
 
 function checkToken( $token)
 {
 
     return $token ===$_SESSION['csrf_token'];
+
 }
 
 
@@ -22,26 +24,20 @@ if (!$_SESSION["loged"]) {
 
 } else {
 
-    echo '<div class="container">  <div class="alert alert-success alert-dismissible fade in">
-
-    <strong>Welcome!</strong>
-  </div></div>';
+    echo '<div class="container">  <div class="alert alert-success alert-dismissible fade in"> <strong>Welcome!</strong> </div></div>';
 
 }
+
 if (isset($_POST['csrf_token']) && isset($_POST['fname']) && isset($_POST['lname'])) {
 
     if (checkToken($_POST['csrf_token'])) {
-      echo '<div class="container">  <div class="alert alert-success alert-dismissible fade in">
-Settings updated
-    </div></div>';
 
+      echo '<div class="container">  <div class="alert alert-success alert-dismissible fade in"> Settings updated </div></div>';
 
     } else {
 
-      echo '<div class="container">  <div class="alert alert-danger alert-dismissible fade in">
-
-      invalid csrf token
-    </div></div>';
+      echo '<div class="container">  <div class="alert alert-danger alert-dismissible fade in"> invalid csrf token </div></div>';
+    
     }
 
 }
